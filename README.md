@@ -2,7 +2,7 @@
 
 A simple yet powerful interactive dashboard to visualize the power of compound interest. Built with Python and Streamlit.
 
-**[👉 Click here to view the Live App](PUT_YOUR_STREAMLIT_LINK_HERE)**
+**[👉 Click here to view the Live App](https://my-compounder-app-vtu22uwzskreylkqowx9e7.streamlit.app/)**
 
 ## 🧐 What is this?
 This application allows users to experiment with financial growth scenarios. By adjusting the initial investment, interest rate, and time horizon, users can instantly see how their money grows over time through an interactive line chart.
