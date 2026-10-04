@@ -1,35 +1,54 @@
-# 📈 The Compounder
+# The Compounder
 
-A simple yet powerful interactive dashboard to visualize the power of compound interest. Built with Python and Streamlit.
+A small interactive calculator that shows how money grows with compound interest, built with Python and Streamlit. Adjust the starting amount, interest rate, and number of years, and the app shows the final balance and a growth chart.
 
-**[👉 Click here to view the Live App](https://my-compounder-app-vtu22uwzskreylkqowx9e7.streamlit.app/)**
+**[View the live app](https://oladipupo-david-compounder-app.streamlit.app/)** (if it has been idle, it may take a few seconds to wake up)
 
-## 🧐 What is this?
-This application allows users to experiment with financial growth scenarios. By adjusting the initial investment, interest rate, and time horizon, users can instantly see how their money grows over time through an interactive line chart.
+> Built with AI assistance. I led the design and feature decisions, then reviewed and tested the code.
 
-## 🚀 Features
-* **Real-time Calculation:** The model updates instantly as you drag the sliders.
-* **Visual Growth:** A dynamic line chart renders the growth curve.
-* **Summary Metrics:** Automatically calculates the final ending balance.
-* **Sidebar Controls:** Clean interface for inputting variables.
+## What it does
 
-## 🛠️ Tech Stack
-* **Python:** Core logic.
-* **Streamlit:** Web framework and UI.
-* **Pandas:** Data management for the chart.
+Three sliders in the sidebar control the inputs:
 
-## 💻 How to Run Locally
-If you want to run this on your own machine:
+| Input | Range | Default |
+|---|---|---|
+| Initial investment | $0 to $10,000 (steps of $1,000) | $1,000 |
+| Interest rate | 0.00 to 0.15 (as a decimal, so 0.05 is 5%) | 0.05 |
+| Time | 1 to 50 years | 20 |
 
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/YOUR_USERNAME/my-compounder-app.git](https://github.com/YOUR_USERNAME/my-compounder-app.git)
-    ```
-2.  **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-3.  **Run the app:**
-    ```bash
-    streamlit run app.py
-    ```
+The app then shows:
+* The **final balance** after the chosen number of years
+* A **line chart** of the balance for each year
+
+With the defaults ($1,000 at 5% for 20 years), the final balance is **$2,653.30**.
+
+## How it works
+
+The code compounds the balance once per year. For each year, it adds interest to the current balance and stores the result in a list. The list becomes a pandas DataFrame, which Streamlit plots as a line chart. The result is the same as the standard formula: starting amount x (1 + rate) ^ years. Streamlit re-runs the script whenever a slider changes, so the results update as you move it.
+
+## Tech stack
+
+* **Python:** the calculation
+* **Streamlit:** the web interface and sliders
+* **pandas:** holds the yearly balances for the chart
+
+## Run locally
+
+```bash
+git clone https://github.com/oladipupo-david-gideon/my-compounder-app.git
+cd my-compounder-app
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+If `streamlit` isn't recognized on Windows, run `python -m streamlit run app.py` instead.
+
+## Limitations
+
+* Interest compounds once per year only. There is no monthly compounding.
+* There are no recurring deposits, and no inflation or tax adjustments.
+* The sliders cap the starting amount at $10,000 and the rate at 15%.
+
+## Disclaimer
+
+This is an educational tool, not financial advice.
